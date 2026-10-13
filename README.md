@@ -181,7 +181,6 @@ SignSerenade/
 │   └── best(4).pt
 ├── docs/
 │   ├── architecture.png
-│   ├── demo.mp4
 │   └── research_paper.pdf
 ├── public/
 ├── app/
@@ -203,8 +202,7 @@ SignSerenade/
 | `backend/best(4).pt`       | Trained YOLO model used for sign detection.                          |
 | `backend/requirements.txt` | Lists the Python dependencies required by the backend.               |
 | `docker-compose.yml`       | Defines the services and configuration for containerized deployment. |
-| `docs/architecture.png`    | System architecture diagram.                                         |
-| `docs/demo.mp4`            | Project demonstration video.                                         |
+| `docs/architecture.png`    | System architecture diagram.                                         |                                         |
 | `docs/research_paper.pdf`  | Research paper documenting the project.                              |
 
 Ensure that the API URL, model path, and port configuration match your local environment.
