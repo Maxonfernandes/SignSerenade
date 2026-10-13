@@ -29,7 +29,8 @@ The following diagram illustrates the overall architecture of SignSerenade, incl
 
 Watch the project demonstration to explore the user interface, learning features, and sign language detection capabilities.
 
-<video src="[docs/demo.mp4](https://drive.google.com/file/d/1Df5bM2WIQDIt9xOVjM84RAOWNR5IGUsL/view?usp=sharing)" controls width="100%"></video>
+
+[Watch the SignSerenade Demo](https://drive.google.com/file/d/1Df5bM2WIQDIt9xOVjM84RAOWNR5IGUsL/view)
 
 [**View Demo Video**](docs/demo.mp4)
 
