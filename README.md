@@ -32,7 +32,6 @@ Watch the project demonstration to explore the user interface, learning features
 
 [Watch the SignSerenade Demo](https://drive.google.com/file/d/1Df5bM2WIQDIt9xOVjM84RAOWNR5IGUsL/view)
 
-[**View Demo Video**](docs/demo.mp4)
 
 ## Research Paper
 
