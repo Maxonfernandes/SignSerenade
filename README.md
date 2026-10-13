@@ -8,20 +8,21 @@
 
 SignSerenade is an interactive sign language learning platform designed to make sign language learning more accessible through **gesture recognition, real-time sign detection, and interactive learning tools**.
 
-Built using **Next.js** and **Python**, the platform integrates a **YOLO-based detection model** to identify sign language gestures and display visual feedback through bounding boxes.
+Built using **Next.js** and **Python**, the platform integrates **YOLO-based object detection and MediaPipe-based hand landmark detection** to support sign language gesture recognition and validation. YOLO identifies supported gestures, while MediaPipe provides hand landmark tracking for gesture analysis and validation, enabling visual feedback through bounding boxes and hand landmarks.
 
 ## Features
 
 * **Sign Language Recognition** — Detect and recognize supported sign language gestures using a YOLO model.
 * **Real-Time Sign Detection** — Process camera input and display detected gestures with bounding boxes.
+* **Hand Landmark Detection** — Use MediaPipe to detect and track hand landmarks for gesture analysis.
 * **Interactive Learning** — Provide interactive tools to support sign language learning.
 * **Quiz System** — Test knowledge and reinforce learning through quizzes.
-* **Gesture Validation** — Validate sign language gestures against expected signs.
+* **Gesture Validation** — Validate sign language gestures using the implemented gesture recognition and landmark-processing components.
 * **Text-to-Sign Translation** — Translate text into corresponding sign language videos.
 
 ## System Architecture
 
-The following diagram illustrates the overall architecture of SignSerenade, including the user interface, Flask API, learning platform, translation components, video mapping, MediaPipe landmarks, and YOLO model.
+The following diagram illustrates the overall architecture of SignSerenade, including the user interface, Flask API, learning platform, translation components, video mapping, MediaPipe hand landmark detection, and YOLO-based gesture recognition.
 
 ![SignSerenade System Architecture](docs/architecture.png)
 
@@ -29,9 +30,7 @@ The following diagram illustrates the overall architecture of SignSerenade, incl
 
 Watch the project demonstration to explore the user interface, learning features, and sign language detection capabilities.
 
-
 [Watch the SignSerenade Demo](https://drive.google.com/file/d/1Df5bM2WIQDIt9xOVjM84RAOWNR5IGUsL/view)
-
 
 ## Research Paper
 
@@ -41,14 +40,15 @@ The research paper documenting the project is available in the `docs` directory.
 
 ## Technology Stack
 
-| Category                   | Technologies                      |
-| -------------------------- | --------------------------------- |
-| **Frontend**               | Next.js, React                    |
-| **Styling and Animations** | Tailwind CSS, Framer Motion       |
-| **Backend**                | Python, Flask                     |
-| **Computer Vision**        | OpenCV                            |
-| **Machine Learning**       | PyTorch, YOLO, Ultralytics        |
-| **Containerization**       | Docker, Docker Compose (Optional) |
+| Category                    | Technologies                      |
+| --------------------------- | --------------------------------- |
+| **Frontend**                | Next.js, React                    |
+| **Styling and Animations**  | Tailwind CSS, Framer Motion       |
+| **Backend**                 | Python, Flask                     |
+| **Computer Vision**         | OpenCV, MediaPipe                 |
+| **Machine Learning**        | PyTorch, YOLO, Ultralytics        |
+| **Hand Landmark Detection** | MediaPipe                         |
+| **Containerization**        | Docker, Docker Compose (Optional) |
 
 ## Prerequisites
 
@@ -56,7 +56,7 @@ Before running the application, ensure the following dependencies are installed:
 
 * **Node.js** 18 or later
 * **npm**
-* **Python** 3.8 or later
+* **Python** 3.8 or later, subject to compatibility with the installed dependencies
 * **Docker and Docker Compose** (Optional)
 
 ## Installation and Setup
@@ -107,6 +107,8 @@ pip install -r requirements.txt
 
 Place the trained YOLO model file, `best(4).pt`, in the `backend` directory.
 
+Ensure that the required MediaPipe dependencies are installed as specified in `requirements.txt`.
+
 Start the Flask server:
 
 ```bash
@@ -148,10 +150,10 @@ Access the frontend at http://localhost:3001.
 3. Navigate to the **Detection** page.
 4. Grant camera access when prompted.
 5. Perform a supported sign language gesture in front of the camera.
-6. View the detected gestures and their corresponding bounding boxes.
+6. View detected gestures, bounding boxes, and hand landmarks where supported by the implementation.
 7. Explore the available learning tools, quizzes, gesture validation, and text-to-sign translation features.
 
-**Recognition performance** depends on the trained model, supported gestures, lighting conditions, and camera quality.
+**Recognition performance** depends on the trained model, supported gestures, hand landmark detection, lighting conditions, camera quality, and the implementation of the recognition pipeline.
 
 ## API Reference
 
@@ -196,16 +198,16 @@ SignSerenade/
 
 ## Configuration
 
-| File or Variable           | Description                                                          |
-| -------------------------- | -------------------------------------------------------------------- |
-| `NEXT_PUBLIC_API_URL`      | Specifies the backend API URL used by the frontend.                  |
-| `backend/best(4).pt`       | Trained YOLO model used for sign detection.                          |
-| `backend/requirements.txt` | Lists the Python dependencies required by the backend.               |
-| `docker-compose.yml`       | Defines the services and configuration for containerized deployment. |
-| `docs/architecture.png`    | System architecture diagram.                                         |                                         |
-| `docs/research_paper.pdf`  | Research paper documenting the project.                              |
+| File or Variable           | Description                                                                                            |
+| -------------------------- | ------------------------------------------------------------------------------------------------------ |
+| `NEXT_PUBLIC_API_URL`      | Specifies the backend API URL used by the frontend.                                                    |
+| `backend/best(4).pt`       | Trained YOLO model used for sign detection.                                                            |
+| `backend/requirements.txt` | Lists the Python dependencies required by the backend, including MediaPipe if used by the application. |
+| `docker-compose.yml`       | Defines the services and configuration for containerized deployment.                                   |
+| `docs/architecture.png`    | System architecture diagram.                                                                           |
+| `docs/research_paper.pdf`  | Research paper documenting the project.                                                                |
 
-Ensure that the API URL, model path, and port configuration match your local environment.
+Ensure that the API URL, model path, dependency versions, and port configuration match your local environment.
 
 ## Docker Commands
 
