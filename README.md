@@ -24,8 +24,6 @@ Built using **Next.js** and **Python**, the platform integrates **YOLO-based obj
 
 The following diagram illustrates the overall architecture of SignSerenade, including the user interface, Flask API, learning platform, translation components, video mapping, MediaPipe hand landmark detection, and YOLO-based gesture recognition.
 
-System Architecture
-flowchart TD
     U["User Interface"] --> API["Flask API"]
 
     API --> LP["Learning Platform"]
