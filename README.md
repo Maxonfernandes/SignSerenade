@@ -20,27 +20,31 @@ Built using **Next.js** and **Python**, the platform integrates **YOLO-based obj
 * **Gesture Validation** — Validate sign language gestures using the implemented gesture recognition and landmark-processing components.
 * **Text-to-Sign Translation** — Translate text into corresponding sign language videos.
 
-##System Architecture
+## System Architecture
 
-The following diagram illustrates the overall architecture of SignSerenade, including the user interface, Flask API, learning platform, translation components, video mapping, MediaPipe hand landmark detection, and YOLO-based gesture recognition.
+The diagram below illustrates the overall architecture of SignSerenade.
 
+```mermaid
 flowchart TD
     U["User Interface"] --> API["Flask API"]
 
     API --> LP["Learning Platform"]
     API --> TR["Translate"]
 
-    LP --> L["Lesson"]
-    L --> P["Practice"]
-    P --> MCQ["MCQ Quiz Generator"]
-    P --> SV["Sign Validation"]
+    subgraph LEARNING["Learning Platform"]
+        LP --> L["Lesson"]
+        L --> P["Practice"]
+        P --> MCQ["MCQ Quiz Generator"]
+        P --> SV["Sign Validation"]
+    end
 
-    TR --> VM["Video Mapping"]
-    TR --> ML["MediaPipe Landmarks"]
-
-    VM --> VIDEOS["Sign Videos"]
-    ML --> YOLO["YOLO Model"]
-    YOLO --> OUT["Text Output"]
+    subgraph TRANSLATION["Sign Language Translation"]
+        TR --> VM["Video Mapping"]
+        TR --> ML["MediaPipe Landmarks"]
+        VM --> VIDEOS["Sign Videos"]
+        ML --> YOLO["YOLO Model"]
+        YOLO --> OUT["Text Output"]
+    end
 
     classDef core fill:#dbeafe,stroke:#2563eb,color:#172554,stroke-width:2px
     classDef learning fill:#dcfce7,stroke:#16a34a,color:#14532d,stroke-width:1.5px
@@ -49,6 +53,8 @@ flowchart TD
     class U,API core
     class LP,L,P,MCQ,SV learning
     class TR,VM,ML,VIDEOS,YOLO,OUT translation
+```
+
 
 ## Demo Video
 
