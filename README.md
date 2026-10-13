@@ -20,10 +20,11 @@ Built using **Next.js** and **Python**, the platform integrates **YOLO-based obj
 * **Gesture Validation** — Validate sign language gestures using the implemented gesture recognition and landmark-processing components.
 * **Text-to-Sign Translation** — Translate text into corresponding sign language videos.
 
-## System Architecture
+##System Architecture
 
 The following diagram illustrates the overall architecture of SignSerenade, including the user interface, Flask API, learning platform, translation components, video mapping, MediaPipe hand landmark detection, and YOLO-based gesture recognition.
 
+flowchart TD
     U["User Interface"] --> API["Flask API"]
 
     API --> LP["Learning Platform"]
