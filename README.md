@@ -1,6 +1,6 @@
 # SignSerenade
 
-### Sign Language Learning Platform with YOLO Integration
+### Sign Language Learning Platform with YOLO & MediaPipe Integration
 
 ---
 
